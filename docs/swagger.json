@@ -1,0 +1,48 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API para obtener datos de volumen específico en función de la presión.",
+        "title": "Phase Change Diagram API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "basePath": "/",
+    "paths": {
+        "/phase-change-diagram": {
+            "get": {
+                "description": "Retorna volumen específico de líquido y vapor en función de la presión.",
+                "summary": "Obtener diagrama de cambio de fase",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Presión en MPa",
+                        "name": "pressure",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.PhaseChangeResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "main.PhaseChangeResponse": {
+            "type": "object",
+            "properties": {
+                "specific_volume_liquid": {
+                    "type": "number"
+                },
+                "specific_volume_vapor": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}

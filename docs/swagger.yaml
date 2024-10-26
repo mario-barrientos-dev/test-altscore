@@ -1,0 +1,32 @@
+basePath: /
+definitions:
+  main.PhaseChangeResponse:
+    properties:
+      specific_volume_liquid:
+        type: number
+      specific_volume_vapor:
+        type: number
+    type: object
+info:
+  contact: {}
+  description: API para obtener datos de volumen específico en función de la presión.
+  title: Phase Change Diagram API
+  version: "1.0"
+paths:
+  /phase-change-diagram:
+    get:
+      description: Retorna volumen específico de líquido y vapor en función de la
+        presión.
+      parameters:
+      - description: Presión en MPa
+        in: query
+        name: pressure
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.PhaseChangeResponse'
+      summary: Obtener diagrama de cambio de fase
+swagger: "2.0"
