@@ -19,5 +19,5 @@ func main() {
 	router.GET("/phase-change-diagram", getPhaseChangeDiagram)
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-	router.Run("0.0.0.0:8000") // Ejecuta la API en el puerto 8080
+	router.Run(":8080")
 }
