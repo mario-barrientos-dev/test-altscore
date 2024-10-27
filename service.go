@@ -4,15 +4,22 @@ import (
 	"errors"
 )
 
+const (
+	minPressure       = 0.05
+	maxPressure       = 10.0
+	liquidCoefficient = 2450
+	liquidConstant    = 10325
+	vaporCoefficient  = 29996500
+	vaporConstant     = 299999825
+	denominator       = 9950000
+)
+
 func calculateSpecificVolumes(pressure float64) (PhaseChangeResponse, error) {
-	// Validar rango de presión
-	if pressure > 10 || pressure < 0.05 {
+	if pressure > maxPressure || pressure < minPressure {
 		return PhaseChangeResponse{}, errors.New("pressure out of range")
 	}
-
-	// Calcular volúmenes usando las fórmulas lineales
-	specificVolumeLiquid := (2450*pressure + 10325) / 9950000
-	specificVolumeVapor := (299999825 - 29996500*pressure) / 9950000
+	specificVolumeLiquid := (liquidCoefficient*pressure + liquidConstant) / denominator
+	specificVolumeVapor := (vaporConstant - vaporCoefficient*pressure) / denominator
 
 	return PhaseChangeResponse{
 		SpecificVolumeLiquid: specificVolumeLiquid,

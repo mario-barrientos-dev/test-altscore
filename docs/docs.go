@@ -21,7 +21,8 @@ const docTemplate = `{
                 "summary": "Obtener diagrama de cambio de fase",
                 "parameters": [
                     {
-                        "type": "integer",
+                        "type": "number",
+                        "format": "float",
                         "description": "Presión en MPa",
                         "name": "pressure",
                         "in": "query",

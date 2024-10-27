@@ -10,7 +10,7 @@ import (
 // getPhaseChangeDiagram devuelve datos específicos del volumen para la presión indicada
 // @Summary Obtener diagrama de cambio de fase
 // @Description Retorna volumen específico de líquido y vapor en función de la presión.
-// @Param pressure query int true "Presión en MPa"
+// @Param pressure query number true "Presión en MPa" format(float)
 // @Success 200 {object} PhaseChangeResponse
 // @Router /phase-change-diagram [get]
 func getPhaseChangeDiagram(c *gin.Context) {

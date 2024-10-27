@@ -19,10 +19,11 @@ paths:
         presión.
       parameters:
       - description: Presión en MPa
+        format: float
         in: query
         name: pressure
         required: true
-        type: integer
+        type: number
       responses:
         "200":
           description: OK

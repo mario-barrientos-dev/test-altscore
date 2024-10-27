@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "altscore/docs" // Importa la documentación de Swagger
+	_ "altscore/docs"
 
 	"github.com/gin-gonic/gin"
 	ginSwagger "github.com/swaggo/gin-swagger"
