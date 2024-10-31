@@ -1,4 +1,4 @@
-package main
+package models
 
 // PhaseChangeResponse representa la respuesta JSON esperada
 type PhaseChangeResponse struct {

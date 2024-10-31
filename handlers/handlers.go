@@ -1,8 +1,10 @@
-package main
+package handlers
 
 import (
 	"net/http"
 	"strconv"
+
+	"altscore/service"
 
 	"github.com/gin-gonic/gin"
 )
@@ -13,7 +15,7 @@ import (
 // @Param pressure query number true "Presión en MPa" format(float)
 // @Success 200 {object} PhaseChangeResponse
 // @Router /phase-change-diagram [get]
-func getPhaseChangeDiagram(c *gin.Context) {
+func GetPhaseChangeDiagram(c *gin.Context) {
 	pressureParam := c.Query("pressure")
 	pressure, err := strconv.ParseFloat(pressureParam, 64)
 	if err != nil {
@@ -21,7 +23,7 @@ func getPhaseChangeDiagram(c *gin.Context) {
 		return
 	}
 
-	response, err := calculateSpecificVolumes(pressure)
+	response, err := service.CalculateSpecificVolumes(pressure)
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
 		return
